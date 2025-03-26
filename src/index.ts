@@ -1,7 +1,7 @@
 console.log("Hello World");
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
-import { getAllWines } from "./wines/wines.resolvers";
+import { getAllWines, createWine } from "./wines/wines.resolvers";
 import { winesDef } from "./wines/wines.types";
 
 const typeDefs = `#graphql
@@ -10,11 +10,18 @@ const typeDefs = `#graphql
   type Query {
     getAllWines: [Wines]
   }
+
+  type Mutation {
+    createWine(name: String, description: String, region: String, author: String): Wines
+  }
 `;
 
 const resolvers = {
   Query: {
     getAllWines,
+  },
+  Mutation: {
+    createWine,
   },
 };
 const server = new ApolloServer({
