@@ -22,5 +22,4 @@ export type Wines = {
   fruit?: string;
   shelf_life?: string;
   price_range?: string;
-  author: string;
 };

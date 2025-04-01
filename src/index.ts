@@ -12,7 +12,7 @@ const typeDefs = `#graphql
   }
 
   type Mutation {
-    createWine(name: String, description: String, region: String, author: String): Wines
+    createWine(name: String, description: String, region: String): Wines
   }
 `;
 
