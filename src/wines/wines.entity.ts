@@ -9,24 +9,20 @@ export class Wines {
   // PrimaryKEy: extension TypeORM
   @PrimaryGeneratedColumn("increment")
   // Extension Graph
-  @Field()
+  //@Field()
   // Typage fort TS
   id: number;
 
   @Column()
-  @Field()
   name: string;
 
   @Column()
-  @Field()
   region: string;
 
   @Column()
-  @Field()
   country?: string;
 
   @Column()
-  @Field()
   description: string;
 
   @Column()
@@ -44,4 +40,8 @@ export class Wines {
   @Column()
   @Field()
   price_range?: string;
+
+  @Column()
+  @Field()
+  isFavorite: boolean;
 }
