@@ -6,7 +6,7 @@ const dataSource = new DataSource({
   type: "sqlite",
   database: "db.sqlite",
   entities: [Wines, Grapes],
-  logging: true,
+  logging: false,
   synchronize: true,
 });
 

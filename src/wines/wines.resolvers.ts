@@ -1,4 +1,4 @@
-import { default as wines } from "../../data.json";
+// import { default as wines } from "../../data.json";
 import { Wines } from "./wines.entity";
 //import type { Wines } from "./wines.types";
 import { Query, Mutation, Resolver, Int, Arg } from "type-graphql";

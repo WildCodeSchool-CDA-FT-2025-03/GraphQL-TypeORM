@@ -2,7 +2,7 @@ import "reflect-metadata";
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
 import { WinesResolver } from "./wines/wines.resolvers";
-import { winesDef } from "./wines/wines.types";
+// import { winesDef } from "./wines/wines.types";
 import dataSource from "./db/client";
 import { buildSchema } from "type-graphql";
 

@@ -13,6 +13,7 @@
     "typescript": "^5.8.2"
   },
   "scripts": {
-    "toto": "ts-node-dev ./src/index.ts"
+    "toto": "ts-node-dev ./src/index.ts",
+    "migrate": "ts-node-dev ./src/db/migrate.ts"
   }
 }

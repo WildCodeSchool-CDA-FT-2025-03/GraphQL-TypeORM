@@ -1,4 +1,5 @@
 import {
+  BaseEntity,
   Column,
   Entity,
   JoinTable,
@@ -10,7 +11,7 @@ import { Field, ObjectType } from "type-graphql";
 
 @ObjectType()
 @Entity()
-export class Grapes {
+export class Grapes extends BaseEntity {
   @PrimaryGeneratedColumn()
   @Field()
   id: number;
