@@ -5,6 +5,7 @@ import { WinesResolver } from "./wines/wines.resolvers";
 // import { winesDef } from "./wines/wines.types";
 import dataSource from "./db/client";
 import { buildSchema } from "type-graphql";
+import "dotenv/config";
 
 // const typeDefs = `#graphql
 //   type Wines ${winesDef}
@@ -13,25 +14,8 @@ import { buildSchema } from "type-graphql";
 //     getAllWines: [Wines]
 //   }
 
-//   type Mutation {
-//     createWine(name: String, description: String, region: String): Wines
-//   }
-// `;
-
-// const resolvers = {
-//   Query: {
-//     getAllWines,
-//   },
-//   Mutation: {
-//     createWine,
-//   },
-// };
-// const server = new ApolloServer({
-//   typeDefs,
-//   resolvers,
-// });
-
 (async () => {
+  console.log("Hello modification en cours");
   await dataSource.initialize();
 
   const schema = await buildSchema({
@@ -40,6 +24,6 @@ import { buildSchema } from "type-graphql";
 
   const server = new ApolloServer({ schema });
   await startStandaloneServer(server, {
-    listen: { port: 5500 },
+    listen: { port: +process.env.PORT },
   });
 })();

@@ -8,7 +8,10 @@ import { Query, Mutation, Resolver, Int, Arg } from "type-graphql";
 export class WinesResolver {
   @Query(() => [Wines])
   async getAllWines() {
-    return await Wines.find();
+    console.info("Docker c'est trop cool");
+    return await Wines.find({
+      relations: ["grapes"],
+    });
   }
 
   getRandom(id: number) {
