@@ -24,6 +24,6 @@ import "dotenv/config";
 
   const server = new ApolloServer({ schema });
   await startStandaloneServer(server, {
-    listen: { port: +process.env.PORT },
+    listen: { port: +process.env.SERVER_PORT },
   });
 })();
