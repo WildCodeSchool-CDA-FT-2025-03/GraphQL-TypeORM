@@ -17,11 +17,3 @@ const dataSource = new DataSource({
 });
 
 export default dataSource;
-
-/**
- * host
- * user
- * database
- * password
- *
- */

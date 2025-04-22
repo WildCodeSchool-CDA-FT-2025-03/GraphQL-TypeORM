@@ -1,5 +1,6 @@
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
-import { Field, ObjectType } from "type-graphql";
+import { Field, InputType, ObjectType } from "type-graphql";
+import { IsEmail, MinLength } from "class-validator";
 
 @ObjectType()
 @Entity()
@@ -10,9 +11,11 @@ export class Users extends BaseEntity {
 
   @Column()
   @Field()
+  @IsEmail()
   email: string;
 
   @Column()
   @Field()
-  hash: string;
+  @MinLength(8)
+  password: string;
 }
