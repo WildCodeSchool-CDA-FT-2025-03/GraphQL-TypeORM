@@ -13,6 +13,7 @@ import { UsersResolver } from "./users/user.resolvers";
 
   const schema = await buildSchema({
     resolvers: [WinesResolver, UsersResolver],
+    validate: true,
   });
 
   const server = new ApolloServer({ schema });

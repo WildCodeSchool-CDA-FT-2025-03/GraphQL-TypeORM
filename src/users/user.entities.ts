@@ -11,10 +11,19 @@ export class Users extends BaseEntity {
 
   @Column()
   @Field()
-  @IsEmail()
   email: string;
 
   @Column()
+  @Field()
+  hash: string;
+}
+
+@InputType()
+export class UsersInput {
+  @Field()
+  @IsEmail()
+  email: string;
+
   @Field()
   @MinLength(8)
   password: string;
