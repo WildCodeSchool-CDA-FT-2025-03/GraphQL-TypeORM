@@ -8,7 +8,6 @@ import "dotenv/config";
 import { UsersResolver } from "./users/user.resolvers";
 
 (async () => {
-  console.log("Hello modification en cours");
   await dataSource.initialize();
 
   const schema = await buildSchema({

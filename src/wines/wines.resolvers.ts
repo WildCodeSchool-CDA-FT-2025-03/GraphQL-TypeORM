@@ -8,7 +8,6 @@ import { Query, Mutation, Resolver, Int, Arg } from "type-graphql";
 export class WinesResolver {
   @Query(() => [Wines])
   async getAllWines() {
-    console.info("Docker c'est trop cool");
     return await Wines.find({
       relations: ["grapes"],
     });
