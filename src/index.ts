@@ -19,5 +19,6 @@ import { UsersResolver } from "./users/user.resolvers";
   const server = new ApolloServer({ schema });
   await startStandaloneServer(server, {
     listen: { port: +process.env.SERVER_PORT },
+    context: async ({ req, res }) => ({ res }),
   });
 })();
