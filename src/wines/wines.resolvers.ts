@@ -1,11 +1,12 @@
 // import { default as wines } from "../../data.json";
 import { Wines } from "./wines.entity";
 //import type { Wines } from "./wines.types";
-import { Query, Mutation, Resolver, Int, Arg } from "type-graphql";
+import { Query, Mutation, Resolver, Int, Arg, Authorized } from "type-graphql";
 //const myData: Wines[] = [...wines];
 
 @Resolver()
 export class WinesResolver {
+  @Authorized(["user@app.co"])
   @Query(() => [Wines])
   async getAllWines() {
     return await Wines.find({
