@@ -13,17 +13,22 @@
     "typeorm": "^0.3.21"
   },
   "devDependencies": {
+    "@types/jest": "^29.5.14",
     "@types/node": "^22.13.13",
+    "graphql-tag": "^2.12.6",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.3.2",
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.8.2"
   },
   "scripts": {
-    "toto": "ts-node-dev ./src/index.ts",
+    "dev": "ts-node-dev ./src/index.ts",
     "migrate": "ts-node-dev ./src/db/migrate.ts",
     "migration:generate": "typeorm-ts-node-commonjs migration:generate --dataSource src/db/client.ts src/migrations/init",
     "migration:up": "typeorm-ts-node-commonjs migration:run --dataSource src/db/client.ts",
     "migration:down": "typeorm-ts-node-commonjs migration:revert --dataSource src/db/client.ts",
-    "migration:create": "typeorm-ts-node-commonjs migration:create src/migrations/data"
+    "migration:create": "typeorm-ts-node-commonjs migration:create src/migrations/data",
+    "test": "jest --config ./jest.config.ts"
   }
 }

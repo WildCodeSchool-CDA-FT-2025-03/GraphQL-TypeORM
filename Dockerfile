@@ -8,6 +8,8 @@ RUN npm install
 
 COPY src src
 
+COPY jest.* ./
+
 # Gardons la migration
 COPY db.sqlite ./db.sqlite
 

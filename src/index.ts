@@ -1,23 +1,17 @@
 import "reflect-metadata";
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
-import { WinesResolver } from "./wines/wines.resolvers";
 import dataSource from "./db/client";
-import { buildSchema } from "type-graphql";
+
 import "dotenv/config";
 import { UsersResolver } from "./users/user.resolvers";
 import jwt from "jsonwebtoken";
+import getSchema from "./schema";
 
 (async () => {
   await dataSource.initialize();
 
-  const schema = await buildSchema({
-    resolvers: [WinesResolver, UsersResolver],
-    validate: true,
-    authChecker: ({ context }, roles: string[]): boolean => {
-      return context?.user?.isConnected && context?.user.email === roles[0];
-    },
-  });
+  const schema = await getSchema();
 
   const server = new ApolloServer({ schema });
   await startStandaloneServer(server, {
