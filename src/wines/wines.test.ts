@@ -1,4 +1,7 @@
+/* eslint-disable no-undef */
 import { graphql, GraphQLSchema, print } from "graphql";
+// Import Jest types for testing
+import "jest";
 import getSchema from "../schema";
 import { gql } from "graphql-tag";
 

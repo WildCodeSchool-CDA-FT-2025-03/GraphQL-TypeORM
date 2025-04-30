@@ -6,6 +6,7 @@
     "dotenv": "^16.4.7",
     "graphql": "^16.10.0",
     "jsonwebtoken": "^9.0.2",
+    "lint-staged": "^15.5.1",
     "pg": "^8.14.1",
     "reflect-metadata": "^0.2.2",
     "sqlite3": "^5.1.7",
@@ -20,7 +21,13 @@
     "ts-jest": "^29.3.2",
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.2",
+    "@typescript-eslint/eslint-plugin": "^8.31.1",
+    "@typescript-eslint/parser": "^8.31.1",
+    "eslint": "^9.25.1",
+    "eslint-config-prettier": "^10.1.2",
+    "eslint-plugin-prettier": "^5.2.6",
+    "prettier": "^3.5.3"
   },
   "scripts": {
     "dev": "ts-node-dev ./src/index.ts",
@@ -29,6 +36,13 @@
     "migration:up": "typeorm-ts-node-commonjs migration:run --dataSource src/db/client.ts",
     "migration:down": "typeorm-ts-node-commonjs migration:revert --dataSource src/db/client.ts",
     "migration:create": "typeorm-ts-node-commonjs migration:create src/migrations/data",
-    "test": "jest --config ./jest.config.ts"
+    "test": "jest --config ./jest.config.ts",
+    "lint-staged": "lint-staged",
+    "lint": "eslint"
+  },
+  "lint-staged": {
+    "*.{js,ts}": [
+      "npm run lint"
+    ]
   }
 }

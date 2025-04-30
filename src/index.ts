@@ -10,6 +10,7 @@ import getSchema from "./schema";
 
 (async () => {
   await dataSource.initialize();
+  console.log("Hello");
 
   const schema = await getSchema();
 
