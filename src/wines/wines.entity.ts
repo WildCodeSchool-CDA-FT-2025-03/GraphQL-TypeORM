@@ -1,5 +1,5 @@
 import { Field, ObjectType } from "type-graphql";
-import { BaseEntity, Column, JoinTable, ManyToMany } from "typeorm";
+import { BaseEntity, Column, ManyToMany } from "typeorm";
 import { Entity, PrimaryGeneratedColumn } from "typeorm";
 import { Grapes } from "../grapes/grapes.entity";
 // Extension GraphQL typeDEF

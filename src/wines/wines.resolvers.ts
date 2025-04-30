@@ -1,7 +1,7 @@
 // import { default as wines } from "../../data.json";
 import { Wines } from "./wines.entity";
 //import type { Wines } from "./wines.types";
-import { Query, Mutation, Resolver, Int, Arg, Authorized } from "type-graphql";
+import { Query, Resolver, Authorized } from "type-graphql";
 //const myData: Wines[] = [...wines];
 
 @Resolver()
