@@ -1,17 +1,41 @@
 // import { default as wines } from "../../data.json";
 import { Wines } from "./wines.entity";
 //import type { Wines } from "./wines.types";
-import { Query, Resolver, Authorized } from "type-graphql";
+import { Arg, Query, Resolver } from "type-graphql";
 //const myData: Wines[] = [...wines];
+import redisClient from "../db/redis";
 
 @Resolver()
 export class WinesResolver {
-  @Authorized(["user@app.co"])
+  // @Authorized(["user@app.co"])
   @Query(() => [Wines])
-  async getAllWines() {
-    return await Wines.find({
+  // Regarder si la data est dans le cache
+  async getAllWines(@Arg("page") page: number) {
+    // si oui, retourne la donnée du cache
+
+    // page 1 => 1,30
+    // page 2 => 31, 60
+    // page 3 => 61, 90
+    // ..., 3, 4, 5 6
+    const key = `wines-page-${page}`; // getAllWines-page-2
+    const cacheWines = await redisClient.get(key);
+    console.info("cache data", cacheWines);
+    if (cacheWines) {
+      console.info("Return the cache");
+      return JSON.parse(cacheWines);
+    }
+
+    // si non, effectue la requete en DB
+    // mets la data en cache
+    // renvoie la donnee
+    console.info("Request the data on the DB");
+    const wines = await Wines.find({
       relations: ["grapes"],
+      take: 30,
     });
+    console.info("Data from the DB", wines);
+    await redisClient.set(key, JSON.stringify(wines));
+    return wines;
   }
 
   getRandom(id: number) {

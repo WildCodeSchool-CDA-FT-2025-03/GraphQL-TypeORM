@@ -2,15 +2,22 @@ import "reflect-metadata";
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
 import dataSource from "./db/client";
+import redisClient from "./db/redis";
 
 import "dotenv/config";
-import { UsersResolver } from "./users/user.resolvers";
+import process from "process";
 import jwt from "jsonwebtoken";
 import getSchema from "./schema";
 
 (async () => {
   await dataSource.initialize();
-  console.log("Hello");
+
+  try {
+    await redisClient.connect();
+    console.info("All uis good with redis");
+  } catch (err) {
+    console.error("Bad connection to redis", err);
+  }
 
   const schema = await getSchema();
 
