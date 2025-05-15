@@ -8,6 +8,7 @@ const hashOptions = {
   memoryCost: 2 ** 16,
   hashLength: 50,
 };
+
 @Resolver()
 export class UsersResolver {
   @Mutation(() => Boolean)
